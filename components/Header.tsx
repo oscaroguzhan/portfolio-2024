@@ -49,7 +49,7 @@ function Header({ }: Props) {
         className='flex items-center gap-2'>
         <Link href="#contact" className='flex items-center justify-evenly space-x-2'>
             <SocialIcon network='email' className='' />
-          <p className='uppercase hidden md:inline-flex'>Contact</p>
+          <span className='uppercase hidden md:inline-flex'>Contact</span>
         </Link>
       </motion.div>
     </header>

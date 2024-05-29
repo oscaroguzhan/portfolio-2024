@@ -135,3 +135,7 @@ export const sanityClient = createClient(config);
 
 export const urlFor = (source: any) => createImageUrlBuilder(sanityClient).image(source);
 ```
+
+## DATA FETCHING - ISR 
+-  ISR (Incremental static regenation) is a technique allowing developer to update static pages after they have been generated (revalidate the page), eliminating the need of rebuild the entire site.
+-  we need to create a getStaticProps function to fetch data from sanity client

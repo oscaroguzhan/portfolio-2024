@@ -5,9 +5,12 @@ import BackgroundCircles from './BackgroundCircles'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-type Props = {}
+import { PageInfo } from '@/typing'
+type Props = {
+  pageInfo: PageInfo
+}
 
-const Hero = (props: Props) => {
+const Hero: React.FC<Props> = ({ pageInfo }) => {
   const [text, count] = useTypewriter({
     words: [
       'Hi, This is Oscar',
@@ -32,7 +35,7 @@ const Hero = (props: Props) => {
       <BackgroundCircles />
       <Image src="/assets/oscar1.png" alt="Oscar profile picture" width={300} height={300} className='rounded-full relative mx-auto object-cover' />
       <div className='z-20'>
-        <h2 className='text-slate-400 uppercase tracking-[12px] pb-2'>Front-end / Full-stack Developer</h2>
+        <h2 className='text-slate-400 uppercase tracking-[12px] pb-2'>{pageInfo.role}</h2>
         <h1 className='text-3xl lg:text-5xl px-10 md:text-4xl'>
           <span className='mr-3'>{text}</span>
           <Cursor cursorColor='#8e0de9' />

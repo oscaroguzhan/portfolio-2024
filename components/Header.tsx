@@ -1,10 +1,12 @@
 "use client"
+import { Social } from '@/typing'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React from 'react'
 import { SocialIcon } from 'react-social-icons'
 
-type Props = {}
+type Props = {
+}
 
 function Header({ }: Props) {
   return (

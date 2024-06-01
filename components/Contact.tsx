@@ -1,10 +1,12 @@
 "use client"
+import { PageInfo } from '@/typing'
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/16/solid'
 import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 
 type Props = {
   title: string,
+  pageInfo:PageInfo
 }
 type FormData = {
   name: string,
@@ -13,7 +15,7 @@ type FormData = {
   message: string
 }
 
-function Contact({ title }: Props) {
+function Contact({ title, pageInfo }: Props) {
   // react-hook-form
   let {
     register,
@@ -29,15 +31,15 @@ function Contact({ title }: Props) {
         <div className='space-y-4 mb-4'>
           <div className='flex items-center justify-evenly'>
             <PhoneIcon className='text-yellow-600 animate-pulse h-8 w-8' />
-            <p>+46 76 652 61 26</p>
+            <p>+{pageInfo.phoneNumber}</p>
           </div>
           <div className='flex items-center justify-evenly'>
             <EnvelopeIcon className='text-yellow-600  h-8 w-8' />
-            <p>oscar.w.ergun@gmail.com</p>
+            <p>{pageInfo.email}</p>
           </div>
           <div className='flex items-center justify-evenly'>
             <MapPinIcon className='text-yellow-600  h-8 w-8' />
-            <p>Ängavångsgatan 115, 254 74, Ödåkra, Sweden</p>
+            <p>{pageInfo.address}</p>
           </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}

@@ -3,7 +3,10 @@
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
-type Props = {}
+import { Experience as ExperienceType} from '@/typing'
+type Props = {
+  
+}
 
 function ExperienceCard({ }: Props) {
   return (

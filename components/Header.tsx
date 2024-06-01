@@ -6,9 +6,10 @@ import React from 'react'
 import { SocialIcon } from 'react-social-icons'
 
 type Props = {
+  socials:Social[]
 }
 
-function Header({ }: Props) {
+function Header({ socials}: Props) {
   return (
     <header className='sticky top-0 flex items-start justify-between max-w-7xl mx-auto z-40 p-5 xl:items-center'>
       <motion.div
@@ -27,13 +28,9 @@ function Header({ }: Props) {
         }}
         className='flex gap-4 items-center'>
         {/* Social Icons */}
-        <SocialIcon url="https://www.linkedin.com/in/oscar-wihlborg-erg%C3%BCn/" />
-        <SocialIcon url="https://github.com/oscaroguzhan" />
-        <SocialIcon url="https://www.facebook.com/oscaroguzhan" />
-        <SocialIcon url="https://www.instagram.com/ergunoguzhan" />
-        <SocialIcon url="https://www.codeguruozzy.com" />
-
+        {socials.map((social) => <SocialIcon url={social.url} />)}
       </motion.div>
+      
       <motion.div
         initial={{
           x: 500,

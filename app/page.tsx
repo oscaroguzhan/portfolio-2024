@@ -8,33 +8,39 @@ import Skills from "@/components/Skills";
 import Projects from '../components/Projects';
 import Contact from "@/components/Contact";
 import { fetchPageInfo } from "@/utils/fetchPageInfo";
-import { PageInfo } from '../typing';
-
+import { PageInfo, Social } from '../typing';
+import { fetchExperiences } from "@/utils/fetchExperiences";
+import { fetchSocials } from "@/utils/fetchSocials";
 
 
 export default function Home() {
   const [pageInfo, setPageInfo] = useState<PageInfo | null>(null)
-
+  const [socials, setSocials] = useState<Social[] |null> (null)
+  
   useEffect(() => {
-    const pageInfo = async () => {
-      const data = await fetchPageInfo()
-      setPageInfo(data);
+    const pageInfoData = async () => {
+      const pageInfo = await fetchPageInfo()
+      const socials = await fetchSocials()
+
+      setPageInfo(pageInfo)
+      setSocials(socials)
     }
-    pageInfo()
+    pageInfoData()
   }, [])
 
-  if (!pageInfo) {
+  if (!pageInfo || !socials ) {
     return <div>Loading...</div>;
   }
+  
   return (
     <main className="bg-[#1C1F33] text-[#fafafa] h-screen snap-y snap-mandatory overflow-y-scroll w-full 
     scrollbar scrollbar-track-[#21253c] scrollbar-thumb-yellow-600">
-      <Header />
+      <Header socials={socials}/>
       <section id="hero" className="snap-start">
-        <Hero pageInfo={pageInfo}/>
+        <Hero pageInfo={pageInfo} />
       </section>
       <section id="about" className="snap-center">
-        <About title="About" />
+        <About title="About" pageInfo={pageInfo}/>
       </section>
       {/* Experience Section */}
       <section id="experiences" className="snap-center">
@@ -48,7 +54,7 @@ export default function Home() {
       </section>
       {/* Contact Section */}
       <section id="contact" className="snap-center">
-        <Contact title="Contact" />
+        <Contact title="Contact" pageInfo={pageInfo}/>
       </section>
     </main>
   );

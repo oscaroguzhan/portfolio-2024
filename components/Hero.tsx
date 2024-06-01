@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { PageInfo } from '@/typing'
+import { urlFor } from '@/sanity'
 type Props = {
   pageInfo: PageInfo
   
@@ -34,7 +35,7 @@ const Hero: React.FC<Props> = ({ pageInfo}) => {
       }}
       className='h-screen flex flex-col items-center space-y-8 justify-center overflow-hidden text-center'>
       <BackgroundCircles />
-      <Image src="/assets/oscar1.png" alt="Oscar profile picture" width={300} height={300} className='rounded-full relative mx-auto object-cover' />
+      <Image src={urlFor(pageInfo?.heroImage).url()} alt="Oscar profile picture" width={300} height={300} className='rounded-full relative mx-auto object-cover' />
       <div className='z-20'>
         <h2 className='text-slate-400 uppercase tracking-[12px] pb-2'>{pageInfo.role}</h2>
         

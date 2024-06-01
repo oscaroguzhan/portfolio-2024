@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
 import {PageInfo } from '@/typing'
+import { urlFor } from '@/sanity'
 
 
 interface Props {
@@ -24,7 +25,7 @@ const About:React.FC<Props> = ({title, pageInfo}) => {
           duration: 1.2
         }}
         className="md:flex md:mr-6 ">
-        <Image src ="/assets/oscar2.png" alt="about-picture" width={288} height={288}
+        <Image src ={urlFor(pageInfo?.profilePic).url()} alt="about-picture" width={288} height={288}
           className='-mb-20 flex-shrink-0 md:mb-0 rounded-full w-48 h-48 object-cover md:w-[300px] md:h-[300px] md:rounded-md xl:w-[400px] xl:h-[400px] xl:rounded-md' />
       </motion.div>
       <div className="space-y-6 px:0 md:px-6 md:flex-1">

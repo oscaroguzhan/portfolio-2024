@@ -19,7 +19,7 @@ export default function Home() {
   const [experiences, setExperiences] = useState<ExperienceType[] | null>(null);
   
   useEffect(() => {
-    const pageInfoData = async () => {
+    const data = async () => {
       const pageInfo = await fetchPageInfo()
       const socials = await fetchSocials()
       const experiences = await fetchExperiences()
@@ -27,7 +27,7 @@ export default function Home() {
       setSocials(socials)
       setExperiences(experiences)
     }
-    pageInfoData()
+    data()
   }, [])
 
   if (!pageInfo || !socials || !experiences ) {
@@ -43,6 +43,7 @@ export default function Home() {
       </section>
       <section id="about" className="snap-center">
         <About title="About" pageInfo={pageInfo}/>
+        
       </section>
       {/* Experience Section */}
       <section id="experiences" className="snap-center">

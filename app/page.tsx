@@ -8,10 +8,11 @@ import Skills from "@/components/Skills";
 import Projects from '../components/Projects';
 import Contact from "@/components/Contact";
 import { fetchPageInfo } from "@/utils/fetchPageInfo";
-import { PageInfo, Social, Experience as ExperienceType, Skill } from '../typing';
+import { PageInfo, Social, Experience as ExperienceType, Skill, Project } from '../typing';
 import { fetchExperiences } from "@/utils/fetchExperiences";
 import { fetchSocials } from "@/utils/fetchSocials";
 import { fetchSkills } from "@/utils/fetchSkills";
+import { fetchProjects } from '../utils/fetchProjects';
 
 
 export default function Home() {
@@ -19,6 +20,8 @@ export default function Home() {
   const [socials, setSocials] = useState<Social[] |null> (null)
   const [experiences, setExperiences] = useState<ExperienceType[] | null>(null)
   const [skills, setSkills] = useState<Skill[] | null>(null)
+  const [projects, setProjects] = useState<Project[] | null>(null)
+  
   
   useEffect(() => {
     const data = async () => {
@@ -26,15 +29,17 @@ export default function Home() {
       const socials = await fetchSocials()
       const experiences = await fetchExperiences()
       const skills = await fetchSkills()
+      const projects = await fetchProjects()
       setPageInfo(pageInfo)
       setSocials(socials)
       setExperiences(experiences)
       setSkills(skills)
+      setProjects(projects)
     }
     data()
   }, [])
 
-  if (!pageInfo || !socials || !experiences || !skills ) {
+  if (!pageInfo || !socials || !experiences || !skills || !projects ) {
     return <div>Loading...</div>;
   }
   
@@ -57,7 +62,7 @@ export default function Home() {
         <Skills title="Skills" skills={skills}/>
       </section>
       <section id="projects" className="snap-start">
-        <Projects title="Projects" />
+        <Projects title="Projects" projects={projects} />
       </section>
       {/* Contact Section */}
       <section id="contact" className="snap-center">

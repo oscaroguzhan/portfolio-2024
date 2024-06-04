@@ -31,7 +31,7 @@ function Projects({ title, projects }: Props) {
               className='mt-28 w-[320px]'
             >
               <Image
-                src={urlFor(project.image).url()} alt="project-img" width={360} height={360} />
+                src={urlFor(project.image).url()} alt="project-img" width={480} height={360} className=' w-full h-[420px]'/>
             </motion.div>
             <div className='space-y-10 px-0 md:px-10 max-w-7xl'>
               <h4 className='text-2xl opacity-90 text-center tracking-wide'>

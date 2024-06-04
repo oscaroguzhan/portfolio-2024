@@ -14,7 +14,7 @@ import { fetchSocials } from "@/utils/fetchSocials";
 import { fetchSkills } from "@/utils/fetchSkills";
 import { fetchProjects } from '../utils/fetchProjects';
 
-
+a
 export default function Home() {
   const [pageInfo, setPageInfo] = useState<PageInfo | null>(null)
   const [socials, setSocials] = useState<Social[] |null> (null)
@@ -71,4 +71,5 @@ export default function Home() {
     </main>
   );
 }
+
 

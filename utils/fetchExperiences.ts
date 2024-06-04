@@ -1,7 +1,7 @@
 import { Experience } from "@/typing";
 
 export const  fetchExperiences = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SANITY_BASE_URL}/api/getExperiences`, {cache: 'force-cache'});
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SANITY_BASE_URL}/api/getExperiences`, {next: {revalidate: 100}});
   const data = await res.json();
   const experiences : Experience[] = data.experiences;
 

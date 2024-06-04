@@ -28,7 +28,7 @@ function Header({ socials}: Props) {
         }}
         className='flex gap-4 items-center'>
         {/* Social Icons */}
-        {socials.map((social) => <SocialIcon url={social.url} />)}
+        {socials.map((social) => <SocialIcon url={social.url} key={social._id}/>)}
       </motion.div>
       
       <motion.div
